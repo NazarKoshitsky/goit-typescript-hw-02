@@ -1,0 +1,41 @@
+.form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: darkblue;
+  height: 80px;
+  width: 100%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.field {
+  width: 350px;
+}
+.input {
+  height: 40px;
+  width: 100%;
+  border-radius: 6px;
+  font-size: 16px;
+  padding-left: 30px;
+  padding-right: 10px;
+  outline: transparent;
+}
+.input:focus {
+  border: 2px solid black;
+}
+.button {
+  background-color: transparent;
+  position: absolute;
+  color: black;
+  top: 50%;
+  padding: 10px;
+
+  font-size: 16px;
+
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+}
