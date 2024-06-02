@@ -19,7 +19,15 @@ const customStyles = {
 };
 Modal.setAppElement("#root");
 
-export default function ImageModal({ isOpen, onClose, modalImg }) {
+export default function ImageModal({
+  isOpen,
+  onClose,
+  modalImg,
+}: {
+  isOpen: boolean;
+  onClose: (event: React.MouseEvent) => void;
+  modalImg: string;
+}) {
   return (
     <div className={css.modal}>
       <Modal

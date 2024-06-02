@@ -9,30 +9,31 @@ import ImageModal from "../ImageModal/ImageModal";
 import css from "./App.module.css";
 
 export default function App() {
-  const [photos, setPhotos] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [modalImg, setModalImg] = useState("");
-  const [page, setPage] = useState(1);
-  const [query, setQuery] = useState("");
+  const [photos, setPhotos] = useState<Array<any>>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+  const [modalImg, setModalImg] = useState<string>("");
 
-  function openModal(fullImg) {
+  const [page, setPage] = useState<number>(1);
+  const [query, setQuery] = useState<string>("");
+
+  function openModal(fullImg: string): void {
     setIsOpen(true);
     setModalImg(fullImg);
   }
 
-  function closeModal() {
+  function closeModal(): void {
     setIsOpen(false);
   }
 
-  const handleSearch = (newQuery) => {
+  const handleSearch = (newQuery: string): void => {
     setQuery(newQuery);
     setPage(1);
     setPhotos([]);
   };
 
-  const handleLoadMore = () => {
+  const handleLoadMore = (): void => {
     setPage(page + 1);
   };
 
@@ -41,11 +42,11 @@ export default function App() {
       return;
     }
 
-    async function getPhotos() {
+    async function getPhotos(): Promise<void> {
       try {
         setError(false);
         setIsLoading(true);
-        const data = await fetchPhotos(query, page);
+        const data: Array<Object> = await fetchPhotos(query, page);
         setPhotos((prevPhotos) => {
           return [...prevPhotos, ...data];
         });

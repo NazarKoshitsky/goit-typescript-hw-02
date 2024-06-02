@@ -3,16 +3,19 @@ import css from "./SearchBar.module.css";
 import toast, { Toaster } from "react-hot-toast";
 import { IoIosSearch } from "react-icons/io";
 
+interface SearchBarProps {
+  onSearch: (query: string) => void;
+}
 const notify = () => toast.error("Please fill in the field!");
 
-export default function SearchBar({ onSearch }) {
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   return (
     <header className={css.header}>
       <Toaster position="top-right" reverseOrder={false} />
       <Formik
         initialValues={{ query: "" }}
-        onSubmit={(values, actions) => {
-          if (values.query == 0) {
+        onSubmit={(values: { query: string }, actions) => {
+          if (values.query == "") {
             notify();
           }
           onSearch(values.query);
@@ -37,4 +40,5 @@ export default function SearchBar({ onSearch }) {
       </Formik>
     </header>
   );
-}
+};
+export default SearchBar;
